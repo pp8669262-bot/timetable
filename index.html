@@ -1,102 +1,122 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh‑CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="研究生课表">
-<title>2026级生物与医药研究生课表</title>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>2026生物与医药研究生课表</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f2f4f8;color:#1a1a2e;min-height:100vh;padding:14px;}
-.header{text-align:center;margin-bottom:16px;}
-.header h1{font-size:19px;font-weight:700;color:#1a1a2e;}
-.header p{font-size:12px;color:#888;margin-top:3px;}
-.selector-wrap{background:#fff;border-radius:12px;padding:14px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:10px;}
-.selector-wrap label{font-size:15px;font-weight:600;white-space:nowrap;}
-.selector-wrap select{flex:1;padding:11px 14px;font-size:16px;border:2px solid #e0e0e0;border-radius:8px;background:#fafafa;color:#1a1a2e;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;}
-.selector-wrap select:focus{border-color:#4a69bd;background:#fff;}
-.week-info{text-align:center;font-size:14px;color:#666;margin-bottom:12px;}
-.week-info strong{color:#4a69bd;font-size:16px;}
-.day-section{background:#fff;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.day-header{padding:11px 14px;font-size:16px;font-weight:700;color:#fff;display:flex;justify-content:space-between;align-items:center;}
-.day-header .count{font-size:11px;font-weight:500;background:rgba(255,255,255,0.25);padding:2px 9px;border-radius:20px;}
-.day-mon .day-header{background:linear-gradient(135deg,#667eea,#764ba2);}
-.day-tue .day-header{background:linear-gradient(135deg,#f093fb,#f5576c);}
-.day-wed .day-header{background:linear-gradient(135deg,#4facfe,#00f2fe);}
-.day-thu .day-header{background:linear-gradient(135deg,#43e97b,#38f9d7);}
-.day-fri .day-header{background:linear-gradient(135deg,#fa709a,#fee140);}
-.day-sat .day-header{background:linear-gradient(135deg,#a8edea,#fed6e3);color:#555;}
-.day-sat .day-header .count{background:rgba(0,0,0,0.1);}
-.period-group{padding:8px 12px;border-bottom:1px solid #f0f0f0;}
-.period-group:last-child{border-bottom:none;}
-.period-label{font-size:12px;font-weight:600;color:#888;margin-bottom:6px;padding-left:4px;display:flex;align-items:center;gap:6px;}
-.period-label .dot{width:6px;height:6px;border-radius:50%;display:inline-block;}
-.p-m1 .dot{background:#ff7675;}
-.p-m2 .dot{background:#fdcb6e;}
-.p-a1 .dot{background:#74b9ff;}
-.p-a2 .dot{background:#a29bfe;}
-.p-e .dot{background:#636e72;}
-.course-card{background:#f8f9fc;border-radius:8px;padding:10px 12px;margin-bottom:6px;border-left:4px solid #4a69bd;}
-.course-card:last-child{margin-bottom:0;}
-.course-card.exp{border-left-color:#e17055;background:#fdf6f4;}
-.course-card.prac{border-left-color:#00b894;background:#f3fbf8;}
-.course-name{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:4px;line-height:1.3;}
-.course-meta{font-size:12px;color:#666;line-height:1.7;}
-.course-meta .tag{display:inline-block;background:#e8ecf4;color:#4a69bd;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px;}
-.course-card.exp .tag{background:#f5e0d9;color:#e17055;}
-.course-card.prac .tag{background:#d4f0e6;color:#00b894;}
-.course-meta span{display:inline-block;margin-right:8px;}
-.empty-day{padding:16px;text-align:center;color:#bbb;font-size:14px;}
-.empty-state{text-align:center;padding:40px 20px;color:#999;}
-.empty-state .icon{font-size:44px;margin-bottom:10px;}
-.footer{text-align:center;padding:16px;font-size:11px;color:#aaa;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system‑ui,‑apple‑system,BlinkMacSystemFont,"Segoe UI",Roboto}
+body{background:#f7f8fa;padding:12px;color:#222}
+#container{max‑width:960px;margin:0 auto}
+.top{display:flex;gap:10px;align‑items:center;margin‑bottom:12px}
+select{padding:8px 10px;font‑size:16px;border‑radius:6px;border:#ccc 1px solid}
+h1{font‑size:18px;font‑weight:600}
+table{width:100%;border‑collapse:collapse;background:#fff;border‑radius:8px;overflow:hidden;box‑shadow:0 1px 4px #00000014}
+th,td{border:#e5e7eb 1px solid;padding:10px 6px;text‑align:center;font‑size:14px}
+th{background:#2563eb;color:#fff;font‑weight:500}
+.period{background:#f3f4f6;font‑weight:500;width:52px}
+.lesson{padding:4px 2px;border‑radius:4px;margin:2px 0;font‑size:12px;line‑height:1.4}
+.type‑理论{background:#dbeafe;color:#1e40af}
+.type‑实验{background:#fed7aa;color:#92400e}
+.type‑实践{background:#bbf7d0;color:#166534}
+.footer{margin‑top:14px;font‑size:12px;color:#666;text‑align:center}
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>2026级生物与医药研究生课表</h1>
-  <p>2026-2027学年 第一学期</p >
+<div id="container">
+  <div class="top">
+    <h1>2026级研究生班课表</h1>
+    <select id="weekSelect"></select>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="period">节次</th>
+        <th>周一</th>
+        <th>周二</th>
+        <th>周三</th>
+        <th>周四</th>
+        <th>周五</th>
+        <th>周六</th>
+        <th>周日</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="footer">数据来源：2026级研究生班级课表</div>
 </div>
-<div class="selector-wrap">
-  <label>选择周次：</label>
-  <select id="weekSelect" onchange="render()"></select>
-</div>
-<div class="week-info" id="weekInfo"></div>
-<div id="container"></div>
-<div class="footer">数据来源：2026级研究生班级课表 · 共17教学周</div>
+
 <script>
 const courses = [
-  {name:"高等生物化学",day:1,periods:[1,2],weeks:[2,3,9],loc:"南二区 牛-209",teacher:"陈沛飞",type:"理论"},
-  {name:"合成生物学",day:1,periods:[3,4],weeks:[2,3,4,7],loc:"南二区 生-206(大众学院)",teacher:"陈沛飞 / 徐丽",type:"理论"},
-  {name:"Academic Reading and Analysis（双语）",day:1,periods:[5,6],weeks:[3,4,5,6,7,8],loc:"南二区 生-217",teacher:"陈锦佳",type:"理论"},
-  {name:"新时代中国特色社会主义理论与实践",day:1,periods:[7,8,9,10],weeks:[2,3,4,5,6,7,8,9,10],loc:"南二区 生-222",teacher:"鲁先瑾",type:"实践"},
-  {name:"高级制药工艺与技术",day:2,periods:[1,2],weeks:[11,12,13,14,15,16],loc:"南二区 牛-220",teacher:"蔡悦悦",type:"理论"},
-  {name:"生物数理统计",day:2,periods:[3,4],weeks:[5,6,7,8,9,12,13,14],loc:"南二区 生-205",teacher:"魏陈 / 戴薇",type:"理论"},
-  {name:"高等仪器分析（实验）",day:2,periods:[5,6],weeks:[11,12,13,14,15,16],loc:"南二区 牛-507(离心室)",teacher:"陈沛飞",type:"实验"},
-  {name:"合成生物学",day:3,periods:[1,2],weeks:[2,3,4,5],loc:"南二区 牛-222",teacher:"陈沛飞 / 徐丽",type:"理论"},
-  {name:"工程伦理",day:3,periods:[1,2],weeks:[11,12,13,14,15,16],loc:"南二区 生化-217",teacher:"韩玉晶",type:"理论"},
-  {name:"研究生外语",day:3,periods:[3,4],weeks:[13,14],loc:"南二区 地-35-504",teacher:"卢琳敏",type:"理论"},
-  {name:"高等生物化学",day:3,periods:[5,6],weeks:[8,12,13,14],loc:"南二区 牛-222",teacher:"姚维干（8、12-13周）/ 陈沛飞等（14周）",type:"理论"},
-  {name:"高等生物化学",day:3,periods:[7,8],weeks:[6],loc:"南二区 牛-222",teacher:"姚维干",type:"理论"},
-  {name:"生物数理统计",day:4,periods:[1,2],weeks:[2,3,4],loc:"南二区 牛-206",teacher:"陈锦佳",type:"理论"},
-  {name:"食品生物工程",day:4,periods:[1,2],weeks:[12,13,14,15,16,17],loc:"南二区 牛-222",teacher:"姚远群",type:"理论"},
-  {name:"Academic Reading and Analysis（双语）",day:4,periods:[3,4],weeks:[3,4,5,6,7,8,9],loc:"南二区 生-217",teacher:"陈锦佳",type:"理论"},
-  {name:"新时代中国特色社会主义理论与实践",day:4,periods:[5,6],weeks:[2,3,4,5,6,7,8,9,10],loc:"南二区 生-222",teacher:"鲁先瑾",type:"实践"},
-  {name:"高等仪器分析",day:5,periods:[1,2],weeks:[12,13,14,15],loc:"南二区 牛-222",teacher:"夏潇潇",type:"理论"},
-  {name:"研究生外语",day:5,periods:[5,6],weeks:[12,13],loc:"南二区 地-35-504",teacher:"卢琳敏",type:"理论"},
-  {name:"高等仪器分析（实验）",day:6,periods:[1,2,3,4],weeks:[7],loc:"南二区 牛-507(离心室)",teacher:"陈沛飞",type:"实验"},
-  {name:"高等仪器分析（实验）",day:6,periods:[5,6],weeks:[12,13],loc:"南二区 牛-507(离心室)",teacher:"陈沛飞",type:"实验"},
-  {name:"工程伦理",day:6,periods:[7,8],weeks:[11,12,13,14,15,16],loc:"南二区 生-222",teacher:"王磊 / 丁毅",type:"理论"}
+{name:"高等生物化学",day:1,periods:[1,2],weeks:[1,2,3,9],loc:"南二区 牛‑209",teacher:"陈帅飞",type:"理论"},
+{name:"合成生物学",day:1,periods:[3,4],weeks:[1,2,3,4,7],loc:"南二区 生‑206(大众学堂)",teacher:"陈帅飞 / 徐涌",type:"理论"},
+{name:"Academic Reading and Analysis（双语）",day:1,periods:[5,6],weeks:[1,3,4,5,6,7,8],loc:"南二区 生‑217",teacher:"徐涌",type:"理论"},
+{name:"新时代中国特色社会主义理论与实践",day:1,periods:[7,8,9,10],weeks:[1,2,3,4,5,6,7,8,9,10],loc:"南二区 牛‑220",teacher:"鲁先虎",type:"理论"},
+
+{name:"高级生物统计",day:2,periods:[1,2],weeks:[11,12,13,14,15,16],loc:"南二区 生‑208",teacher:"靳振 / 戴佩",type:"理论"},
+{name:"高等仪器分析(实验)",day:2,periods:[3,4],weeks:[5,6,8,9,12,13,14],loc:"南二区 生‑205",teacher:"陈帅飞",type:"实验"},
+{name:"高等生物化学",day:2,periods:[5,6],weeks:[1,2,3,4,5],loc:"南二区 牛‑209",teacher:"陈帅飞",type:"理论"},
+{name:"工程伦理学",day:2,periods:[7,8],weeks:[11,12,13,14,15,16],loc:"南二区 生化‑217",teacher:"韩玉磊",type:"理论"},
+
+{name:"研究生外语",day:3,periods:[1,2],weeks:[1,3,14],loc:"南二区 地‑35‑504",teacher:"卢继敏",type:"理论"},
+{name:"高等生物化学",day:3,periods:[3,4],weeks:[8,12,13,14],loc:"南二区 牛‑222",teacher:"姚维平",type:"理论"},
+{name:"食品生物工程",day:3,periods:[5,6],weeks:[1,2,3,4,5,6,7],loc:"南二区 牛‑206",teacher:"高继伟",type:"理论"},
+{name:"Academic Reading and Analysis（双语）",day:4,periods:[1,2],weeks:[1,2,3,4,5,6,7,8,9],loc:"南二区 生‑217",teacher:"徐涌",type:"理论"},
+{name:"新时代中国特色社会主义理论与实践",day:4,periods:[3,4],weeks:[1,2,3,4,5,6,7,8,9,10],loc:"南二区 牛‑220",teacher:"鲁先虎",type:"理论"},
+{name:"高等仪器分析",day:4,periods:[5,6],weeks:[12,13,14,15],loc:"南二区 牛‑222",teacher:"夏瑶琪",type:"理论"},
+
+{name:"研究生外语",day:5,periods:[1,2],weeks:[1,2,13],loc:"南二区 地‑35‑504",teacher:"卢继敏",type:"理论"},
+{name:"高等仪器分析（实验）",day:5,periods:[3,4],weeks:[1,2,4,11],loc:"南二区 生‑507(离心室)",teacher:"陈帅飞",type:"实验"},
+{name:"工程伦理学",day:5,periods:[7,8],weeks:[11,12,13,14,15,16],loc:"南二区 生‑222",teacher:"王磊 / 丁毅",type:"理论"},
 ];
-const dayNames=["","星期一","星期二","星期三","星期四","星期五","星期六","星期日"];
-const dayCls=["","day-mon","day-tue","day-wed","day-thu","day-fri","day-sat",""];
-function periodGroup(ps){const m=Math.min(...ps);if(m<=2)return{key:"p-m1",label:"上午 · 第1-2节"};if(m<=4)return{key:"p-m2",label:"上午 · 第3-4节"};if(m<=6)return{key:"p-a1",label:"下午 · 第5-6节"};if(m<=8)return{key:"p-a2",label:"下午 · 第7-8节"};return{key:"p-e",label:"晚上 · 第9-10节"};}
-function periodText(ps){if(ps.length===1)return"第"+ps[0]+"节";return"第"+ps[0]+"-"+ps[ps.length-1]+"节";}
-function init(){const sel=document.getElementById("weekSelect");for(let i=1;i<=17;i++){const o=document.createElement("option");o.value=i;o.textContent="第 "+i+" 周";sel.appendChild(o);}sel.value=2;render();}
-function render(){const week=parseInt(document.getElementById("weekSelect").value);const box=document.getElementById("container");const info=document.getElementById("weekInfo");const list=courses.filter(c=>c.weeks.includes(week));info.innerHTML="当前查看：<strong>第 "+week+" 周</strong> · 共 "+list.length+" 门次课程";if(list.length===0){box.innerHTML='<div class="empty-state"><div class="icon">📭</div><p>第 '+week+' 周没有课程安排</p ></div>';return;}let html="";for(let d=1;d<=7;d++){const dc=list.filter(c=>c.day===d);if(dc.length===0)continue;html+='<div class="day-section '+dayCls[d]+'">';html+='<div class="day-header"><span>'+dayNames[d]+'</span><span class="count">'+dc.length+' 门课</span></div>';const groups={};dc.forEach(c=>{const g=periodGroup(c.periods);if(!groups[g.key])groups[g.key]={label:g.label,courses:[]};groups[g.key].courses.push(c);});["p-m1","p-m2","p-a1","p-a2","p-e"].forEach(k=>{if(!groups[k])return;html+='<div class="period-group">';html+='<div class="period-label '+k+'"><span class="dot"></span>'+groups[k].label+'</div>';groups[k].courses.forEach(c=>{const tc=c.type==="实验"?"exp":(c.type==="实践"?"prac":"");html+='<div class="course-card '+tc+'">';html+='<div class="course-name">'+c.name+'</div>';html+='<div class="course-meta"><span class="tag">'+c.type+'</span><span>🕐 '+periodText(c.periods)+'</span><span>📍 '+c.loc+'</span><span>👨‍🏫 '+c.teacher+'</span></div>';html+='</div>';});html+='</div>';});html+='</div>';}box.innerHTML=html;}
-init();
+
+const dayNames=["周一","周二","周三","周四","周五","周六","周日"];
+const dayMap={1:"day‑mon",2:"day‑tue",3:"day‑wed",4:"day‑thu",5:"day‑fri",6:"day‑sat",7:"day‑sun"};
+const periodGroups=[
+{id:1,label:"上午·第1‑2节"},
+{id:3,label:"上午·第3‑4节"},
+{id:5,label:"下午·第5‑6节"},
+{id:7,label:"下午·第7‑8节"},
+];
+
+function periodText(ps){
+if(ps.length===1) return `第${ps[0]}节`;
+return `第${ps[0]}‑${ps[ps.length‑1]}节`;
+}
+
+function inWeek(c,w){return c.weeks.includes(w);}
+
+function render(w){
+const tb=document.getElementById("tableBody");
+tb.innerHTML="";
+for(const pg of periodGroups){
+  const tr=document.createElement("tr");
+  tr.innerHTML=`<td class="period">${pg.label}</td>`;
+  for(let d=1;d<=7;d++){
+    const td=document.createElement("td");
+    const items=courses.filter(c=>c.day===d&&inWeek(c,w)&&c.periods[0]===pg.id);
+    for(const it of items){
+      const div=document.createElement("div");
+      div.className=`lesson type‑${it.type}`;
+      div.innerText=`${it.name}\n${it.loc}｜${it.teacher}`;
+      td.appendChild(div);
+    }
+    tr.appendChild(td);
+  }
+  tb.appendChild(tr);
+}
+}
+
+(function init(){
+const sel=document.getElementById("weekSelect");
+for(let i=1;i<=17;i++){
+  const opt=document.createElement("option");
+  opt.value=i;opt.textContent=`第${i}周`;sel.appendChild(opt);
+}
+sel.value=2;
+sel.onchange=()=>render(Number(sel.value));
+render(2);
+})();
 </script>
 </body>
 </html>
